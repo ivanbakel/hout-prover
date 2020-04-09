@@ -1,6 +1,6 @@
-# hout - a non-interactive proof assistant for first-order logic, in pure Haskell
+# hout - a non-interactive proof assistant for first-order logic, in Haskell
 
-hout is a pure-Haskell non-interactive proof assistant for intuitionistic first-order logic.
+hout is an in-Haskell non-interactive proof assistant for intuitionistic first-order logic.
 
 Alternatively, hout provides a monad that allows you to write functions in the style of proof-assistant proofs, which are then computable Haskell terms.
 
@@ -80,6 +80,6 @@ hout also has the nice property of intuitionistic proof assistants that proofs a
 ```
 identity :: a -> a
 identity :: runTheorem $ Theorem do
-  intro a
+  a <- intro
   exact a
 ```
