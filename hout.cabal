@@ -1,0 +1,28 @@
+name:                hout
+version:             0.1.0.0
+-- synopsis:
+-- description:
+homepage:            https://github.com/ivanbakel/hout#readme
+license:             BSD3
+license-file:        LICENSE
+author:              Isaac van Bakel
+maintainer:          ivb@vanbakel.io
+copyright:           2020 Isaac van Bakel
+category:            Web
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Hout.Logic.Intuitionistic
+                     , Hout.Logic.FirstOrder
+                     , Hout.Prover.Tactics
+  build-depends:       base >= 4.7 && < 5
+                     , indexed
+                     , do-notation
+  default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/ivanbakel/hout
