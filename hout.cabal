@@ -18,6 +18,7 @@ library
   exposed-modules:     Hout.Logic.Intuitionistic
                      , Hout.Logic.FirstOrder
                      , Hout.Prover.Tactics
+                     , Hout.Prover.Proofs
   build-depends:       base >= 4.7 && < 5
                      , indexed
                      , do-notation

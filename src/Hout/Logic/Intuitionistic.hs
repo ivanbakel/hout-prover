@@ -5,22 +5,47 @@
 -- To allow us to redefine True & False as types instead of constructors
 {-# LANGUAGE NoImplicitPrelude #-}
 
+{-|
+Module      : Hout.Logic.Intuitionistic
+Description : Constructs of intuitionistic logic in Haskell types
+Copyright   : (c) Isaac van Bakel, 2020
+License     : BSD-3
+Maintainer  : ivb@vanbakel.io
+Stability   : experimental
+Portability : POSIX
+
+This module contains type aliases for intuitionistic logic constructions which are
+expressed as Haskell types.
+
+It also gives the natural deduction rules for those aliases, except when they
+are aliases of arrow types. For example, implies-introduction and elimination
+are both Haskell arrow constructions (function abstraction and application,
+respectively) so no rule is given.
+-}
 module Hout.Logic.Intuitionistic where
 
 import Prelude hiding (True, False)
 
+import Data.Void
+
 -- Types
 
-data True = True
+-- | The trivially-inhabited type. 'True' is defined as '()' to give it a
+-- canonical construction, so that all proofs of 'True' are identical.
+type True = ()
 
-data False
+-- | The uninhabited type.
+type False = Void
 
 type (a /\ b) = (a, b)
 
 type (a \/ b) = Either a b
 
+-- | Negation of a type. Because this is an arrow type alias, not-introduction
+-- and elimination are not part of this module.
 type Not a = a -> False
 
+-- | Iff. Some derived rules are defined for iff for the sake of completeness.
 type (a <-> b) = (a -> b) /\ (b -> a)
 
 -- Natural deduction 
@@ -45,13 +70,13 @@ orElim fromA fromB (Left a) = fromA a
 orElim fromA fromB (Right b) = fromB b
 
 trueIntro :: True
-trueIntro = True
+trueIntro = ()
 
+-- | Ex Falso Quod Libet - it is recommended when writing functions of this
+-- form to use the 'EmptyCase' extension, to make the compiler check that
+-- the type is uninhabited.
 exFalso :: False -> a
 exFalso false = case false of
-
--- Notice the lack of impliesIntro and impliesElim
---   as well as notIntro and notElim
 
 -- Derived rules
 
