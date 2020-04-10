@@ -8,7 +8,7 @@ This is possible thanks to the Curry-Howard isomorphism.
 
 ## What?
 
-If you know about the HCI and intuitionistic logic, skip this section.
+If you know about the CHI and intuitionistic logic, skip this section.
 
 ### The Curry-Howard isomorphism
 
@@ -20,7 +20,7 @@ What about types with no inhabitant? Taking some type known to have no inhabitan
 
 This also has implications for function types - a term with type `a -> b` is a function from terms of type `a` to terms of type `b`. You can equally consider it as a function from proofs of the proposition `a` to proofs of the proposition `b` - in other words, the function itself is a proof that `a` implies `b`, because if you have a proof that `a` is true, you can obtain a proof that `b` is true.
 
-Other logical connectives also have equivalents in Haskell types. `False` is `Void`, because you can't construct a proof for it; `a /\ b` is the tuple (or product) `(a, b)`; `a \/ b` is the (sum) `Either a b`; and `Not a` - the claim that `a` is uninhabited - is precisely `a -> False`. `True` can be any inhabited type, but it's helpful to have a type with a canonical construction, so `True` is normally `()`, the empty tuple, which has the unique constructor `()`.
+Other logical connectives also have equivalents in Haskell types. `False` is `Void`, because you can't construct a proof for it; `a /\ b` is the tuple (or product) `(a, b)`; `a \/ b` is (the sum) `Either a b`; and `Not a` - the claim that `a` is uninhabited - is precisely `a -> False`. `True` can be any inhabited type, but it's helpful to have a type with a canonical construction, so `True` is normally `()`, the empty tuple, which has the unique constructor `()`.
 
 You can see the correspondence in these types - `(a, b)` is inhabited if and only if both `a` and `b` are inhabited. Similarly, `Either a b` is inhabited if and only if at least one of `a`, `b` is inhabited. Phrasing it in terms of proofs, if you have a proof of `a` and a proof of `b`, you can construct a proof of `a /\ b` (and vice-versa) - and with a proof of `a`, you can construct a proof of `a \/ b`. With a proof of `a \/ b`, you can *destruct* the proof to get either a proof for `a` (`Left a`) or a proof for `b` (`Right b`).
 
@@ -46,7 +46,7 @@ The `Tactic` monad is an indexed monad for which the monad state is the current 
 ```
 data Tactic from to a = Tactic ((a -> to) -> from)
 ```
-A `Tactic` term represents a vaild goal transformation - you are allowed to change a proof of `from` into a proof of `to`, and introduce the additional hypothesis `a`, if you can use a proof of `a -> to` to prove `from`.
+A `Tactic` term represents a valid goal transformation - you are allowed to change a proof of `from` into a proof of `to`, and introduce the additional hypothesis `a`, if you can use a proof of `a -> to` to prove `from`.
 
 For example, the `apply` function has the signature
 ```
