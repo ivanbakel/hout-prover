@@ -79,7 +79,7 @@ Because `Tactic` is an indexed monad, you can use the `do-notation` package to w
 hout also has the nice property of intuitionistic proof assistants that proofs are themselves terms, and can be run as Haskell code. This gives hout the alternative use of writing functions in a proof-y syntax using the `Tactic` monad. For example, the `identity` function can be written as
 ```
 identity :: a -> a
-identity :: runTheorem $ Theorem do
+identity :: runProof $ Proof do
   a <- intro
   exact a
 ```
