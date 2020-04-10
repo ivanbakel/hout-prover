@@ -74,7 +74,7 @@ apply f = Tactic \unit_a -> f (unit_a ())
 
 -- | Apply a forall to the goal. This solves the goal immediately.
 applyF :: Forall k p -> Tactic (p a) () ()
-applyF f = Tactic (\nil -> f)
+applyF (Forall f) = Tactic (\nil -> f)
 
 -- | Transform a disjunction goal into the goal of the left side.
 left :: Tactic (a \/ b) a ()
@@ -110,6 +110,10 @@ enough transform = Tactic \f -> let Tactic g = transform (f ()) in g \() -> ()
 -- the statement for that witness.
 exists :: Witness (a :: k) -> Tactic (Exists k p) (p a) ()
 exists a = Tactic (\proof_of_p_a -> Exists a (proof_of_p_a ()))
+
+-- | Transform a goal for a specific value to a general 'Forall' goal
+generalize :: Tactic (p a) (Forall k p) ()
+generalize = Tactic \f -> let Forall forall = f () in forall
 
 -- | Solve a reflexive goal.
 reflexivity :: Tactic (Equal a a) () ()

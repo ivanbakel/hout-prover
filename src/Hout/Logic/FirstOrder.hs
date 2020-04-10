@@ -45,9 +45,11 @@ data Witness (a :: k) where
 data Exists k (p :: k -> *) where
   Exists :: Witness (a :: k) -> p a -> Exists k p
 
--- | The forall quantifier. Note that, as this is also an in-built Haskell type
--- operation, like @->@, no rules are given for it.
-type Forall k (p :: k -> *) = (forall (a :: k). p a)
+-- | The forall quantifier. As with 'Exists', the predicate is required to
+-- return a 'Type'. Despite @forall@ being a Haskell built-in, the lack of
+-- support for impredicative types means that a newtype is declared for
+-- usability. 
+data Forall k (p :: k -> *) = Forall (forall (a :: k). p a)
 
 -- | Type level equality, parameterised by a kind.
 data Equal (a :: k) (b :: k) where
@@ -66,6 +68,12 @@ existsIntro witness proof = Exists witness proof
 -- existential types are not allowed in the return type
 existsElim :: (forall (a :: k). Witness a -> p a -> b) -> Exists k p -> b
 existsElim f (Exists witness proof) = f witness proof
+
+forallIntro :: (forall (a :: k). p a) -> Forall k p
+forallIntro forall = Forall forall
+
+forallElim :: Forall k p -> p (a :: k)
+forallElim (Forall forall) = forall
 
 eqRefl :: Equal a a
 eqRefl = Refl
