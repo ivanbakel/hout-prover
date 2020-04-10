@@ -2,7 +2,7 @@ name:                hout
 version:             0.1.0.0
 -- synopsis:
 -- description:
-homepage:            https://github.com/ivanbakel/hout#readme
+homepage:            https://github.com/ivanbakel/hout-prover#readme
 license:             BSD3
 license-file:        LICENSE
 author:              Isaac van Bakel
@@ -25,4 +25,4 @@ library
 
 source-repository head
   type:     git
-  location: https://github.com/ivanbakel/hout
+  location: https://github.com/ivanbakel/hout-prover
