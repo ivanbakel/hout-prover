@@ -17,7 +17,6 @@ code.
 module Hout.Prover.Proofs where
 
 import Control.Monad.Indexed
-import Language.Haskell.DoNotation
 import Prelude hiding (True, False, Monad (..))
 
 import Hout.Prover.Tactics
