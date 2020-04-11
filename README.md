@@ -6,6 +6,10 @@ Alternatively, hout provides a monad that allows you to write functions in the s
 
 This is possible thanks to the Curry-Howard isomorphism.
 
+## Examples
+
+Have a look at `examples/Hout/Examples.hs` for some examples.
+
 ## What?
 
 If you know about the CHI and intuitionistic logic, skip this section.
@@ -73,6 +77,10 @@ Because `Tactic` is an indexed monad, you can use the `do-notation` package to w
   * use pattern-matching in binds, particularly when working with existential types. GHC has some unfortunate behaviour when trying to use `let` in do notation when working with existential type arguments.
   * Enable block arguments, and use do notation for subgoals
   * If your final statement is a tactic that introduces a hypothesis, but the new goal is trivial `()`, use `qed` to end your proof.
+
+### Limitations
+
+The use of `Forall` is limited by Haskell's lack of support for impredicative polymorphism - the instantiation of type variables with higher-ranked types. This makes it basically impossible to prove a `Forall` using the `Tactic` monad, since under the hood `Forall` is just a Haskell type-level `forall`.
 
 ## Computations written in the proof style
 
