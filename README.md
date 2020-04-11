@@ -1,4 +1,4 @@
-# hout - a non-interactive proof assistant for first-order logic, in Haskell
+# hout - a non-interactive proof assistant for first-order logic, in Haskell ![Hackage](https://img.shields.io/hackage/v/hout)
 
 hout is an in-Haskell non-interactive proof assistant for intuitionistic first-order logic.
 
