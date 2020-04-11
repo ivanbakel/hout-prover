@@ -1,7 +1,20 @@
 name:                hout
 version:             0.1.0.0
--- synopsis:
--- description:
+synopsis:            Non-interactive proof assistant monad for first-order logic.
+description:         Hout is an in-Haskell non-interactive proof assistant for
+                     intuitionistic first-order logic, using Haskell's type
+                     system. If a proof written in Hout compiles, it is correct.
+                     .
+                     Alternatively, Hout provides an indexed monad which,
+                     combined with Haskell's do notation, allows for writing
+                     Haskell code in the style of proof assistants.
+                     .
+                     The main part of Hout's value is found in
+                     "Hout.Prover.Tactics", which defines the @Tactic@ monad
+                     and several proof tactics similar to those found in Coq.
+                     Other useful defintions for using Hout can be found in
+                     "Hout.Prover.Proofs".
+
 homepage:            https://github.com/ivanbakel/hout-prover#readme
 license:             BSD3
 license-file:        LICENSE
