@@ -23,7 +23,7 @@ maintainer:          ivb@vanbakel.io
 copyright:           2020 Isaac van Bakel
 category:            Type System, Logic
 build-type:          Simple
-extra-source-files:  README.md
+extra-source-files:  README.md, ChangeLog.md
 cabal-version:       >=1.10
 
 library
