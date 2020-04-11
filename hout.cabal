@@ -21,7 +21,7 @@ license-file:        LICENSE
 author:              Isaac van Bakel
 maintainer:          ivb@vanbakel.io
 copyright:           2020 Isaac van Bakel
-category:            Web
+category:            Type System, Logic
 build-type:          Simple
 extra-source-files:  README.md
 cabal-version:       >=1.10
